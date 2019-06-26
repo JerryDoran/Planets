@@ -1,10 +1,8 @@
 const modal = document.getElementById('modal');
-// const image = document.getElementById('pluto');
+const images = [...document.querySelectorAll('.image-container')];
 const closeBtn = document.querySelector('.close-btn');
 
-// image.addEventListener('click', openModal);
-
-closeBtn.addEventListener('click', closeModal);
+// closeBtn.addEventListener('click', closeModal);
 
 window.addEventListener('click', clickOutside);
 
@@ -20,8 +18,10 @@ class Planets {
       planets = planets.map(planet => {
         // Destructuring the json file to pull out the data we want
         const { id, name, distance, diameter } = planet;
+
         return { id, name, distance, diameter };
       });
+      // planets.forEach(planet => console.log(planet.id));
       return planets;
     } catch (error) {
       console.log(error);
@@ -30,17 +30,13 @@ class Planets {
 }
 
 class UI {
-  displayPlanetInfo(planets) {
-    console.log(planets);
-  }
-
-  getImages() {
-    const images = [...document.querySelectorAll('.image-container')];
-
+  displayModal(planets) {
+    // planets.forEach(planet => console.log(planet.name));
     images.forEach(image => {
-      let id = image.dataset.id;
-
-      image.addEventListener('click', openModal);
+      image.addEventListener('click', () => {
+        let id = image.dataset.id;
+        openModal(planets, id);
+      });
     });
   }
 }
@@ -50,16 +46,37 @@ document.addEventListener('DOMContentLoaded', () => {
   const ui = new UI();
 
   // Get planet information
-  planets
-    .getPlanets()
-    .then(planets => {
-      ui.displayPlanetInfo(planets);
-    })
-    .then(() => {
-      ui.getImages();
-    });
+  planets.getPlanets().then(planets => {
+    ui.displayModal(planets);
+  });
 });
-function openModal() {
+
+function openModal(planets, id) {
+  planets.forEach(planet => {
+    if (planet.id == id) {
+      let result = `
+      <div class="modal-content">
+          <div class="modal-header">
+            <h2>Planetary Facts</h2>
+                      
+          </div>
+          <div class="modal-body">
+            <div class="title">
+                <h6>Distance From Sun:</h6>
+                <h6>Diameter:</h6>
+            </div>
+            <div class="fact">
+                <h6>${planet.distance}</h6>
+                <h6>${planet.diameter}</h6>
+            </div>            
+          </div>
+        </div>      
+      `;
+
+      modal.innerHTML = result;
+    }
+  });
+
   modal.style.display = 'block';
 }
 

@@ -2,6 +2,11 @@
 @import 'config';
 
 /********************************** PAGE RESETS *************************************/
+
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +18,12 @@ body {
 }
 
 /******************************** NAVBAR SECTION ************************************/
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
 .navbar-brand {
   color: $primary-color !important;
   font-weight: bold;
@@ -73,6 +84,10 @@ body {
 }
 
 /******************************** ABOUT SECTION ************************************/
+#about {
+  min-height: 100vh;
+}
+
 .about-image-container {
   position: relative;
 
@@ -213,5 +228,17 @@ body {
   }
   to {
     opacity: 1;
+  }
+}
+
+@media (min-width: 600px) {
+  .modal-content {
+    max-width: 60%;
+  }
+}
+
+@media (min-width: 800px) {
+  .modal-content {
+    max-width: 40%;
   }
 }
