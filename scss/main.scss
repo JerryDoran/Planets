@@ -166,6 +166,98 @@ body {
   }
 }
 
+/******************************** ASTRONOMY SECTION ************************************/
+#astronomy {
+  min-height: 90vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('/images/telescope.jpg');
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 5px 0 80px 0;
+  color: $main-white;
+
+  .title-text {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .astronomy-container {
+    max-width: 90vw;
+    margin: 0 auto;
+  }
+
+  .astronomy-item {
+    overflow: hidden;
+    position: relative;
+    padding: 60px;
+
+    .fas {
+      font-size: 60px;
+      margin-bottom: 30px;
+      color: $primary-color;
+    }
+
+    .front-text {
+      text-align-last: center;
+      @include astronomyEaseIn;
+
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+
+    .back-text {
+      position: absolute;
+      bottom: -15em;
+      width: 75%;
+      margin: 0 auto;
+      height: 100%;
+      transition: bottom 2s;
+      padding: 30px 0;
+
+      h1 {
+        margin-bottom: 20px;
+        font-size: 1.5rem;
+      }
+
+      button {
+        margin-top: 10px;
+        padding: 5px 10px;
+        background: transparent;
+        border: 2px solid $primary-color;
+        font-size: 20px;
+        color: $primary-color;
+
+        &:hover {
+          background-color: $primary-color;
+          color: $main-white;
+        }
+      }
+    }
+
+    &:hover .front-text {
+      transform: translateY(-200px);
+    }
+
+    &:hover .back-text {
+      bottom: 0;
+    }
+  }
+
+  .astronomy-item-black {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+  }
+
+  .astronomy-item-white {
+    background: linear-gradient(
+      rgba(206, 208, 206, 0.6),
+      rgba(206, 208, 206, 0.6)
+    );
+    color: $main-black;
+  }
+}
 /******************************** MODAL SECTION ************************************/
 .modal {
   display: none;
@@ -191,6 +283,7 @@ body {
     background: $secondary-black;
     padding: 15px;
     color: $main-white;
+    text-transform: capitalize;
 
     h2 {
       margin: 0;
@@ -240,5 +333,28 @@ body {
 @media (min-width: 800px) {
   .modal-content {
     max-width: 40%;
+  }
+}
+
+@media (min-width: 776px) {
+  .astronomy-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .astronomy-container .astronomy-item:nth-of-type(1) {
+    order: 1;
+  }
+
+  .astronomy-container .astronomy-item:nth-of-type(2) {
+    order: 2;
+  }
+
+  .astronomy-container .astronomy-item:nth-of-type(3) {
+    order: 4;
+  }
+
+  .astronomy-container .astronomy-item:nth-of-type(4) {
+    order: 3;
   }
 }

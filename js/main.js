@@ -17,9 +17,9 @@ class Planets {
       // Mapping the planets array to return data fields that mean something to us
       planets = planets.map(planet => {
         // Destructuring the json file to pull out the data we want
-        const { id, name, distance, diameter } = planet;
+        const { id, name, distance, diameter, orbit } = planet;
 
-        return { id, name, distance, diameter };
+        return { id, name, distance, diameter, orbit };
       });
       // planets.forEach(planet => console.log(planet.id));
       return planets;
@@ -57,17 +57,19 @@ function openModal(planets, id) {
       let result = `
       <div class="modal-content">
           <div class="modal-header">
-            <h2>Planetary Facts</h2>
+            <h2>Planetary Facts - ${planet.name} </h2>
                       
           </div>
           <div class="modal-body">
             <div class="title">
                 <h6>Distance From Sun:</h6>
                 <h6>Diameter:</h6>
+                <h6>Orbit Period:</h6>
             </div>
             <div class="fact">
                 <h6>${planet.distance}</h6>
                 <h6>${planet.diameter}</h6>
+                <h6>${planet.orbit}</h6>
             </div>            
           </div>
         </div>      

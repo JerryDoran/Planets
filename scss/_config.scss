@@ -18,3 +18,7 @@ $black-trans: rgba(0, 0, 0, 0.3);
 @mixin easeInOut {
   transition: all 1s ease-in-out;
 }
+
+@mixin astronomyEaseIn {
+  transition: transform 2s;
+}
