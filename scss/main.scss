@@ -168,19 +168,20 @@ body {
 
 /******************************** ASTRONOMY SECTION ************************************/
 #astronomy {
-  min-height: 90vh;
+  min-height: 100vh;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url('/images/telescope.jpg');
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  padding: 5px 0 80px 0;
+  padding: 20px 0 80px 0;
   color: $main-white;
 
   .title-text {
     text-align: center;
     margin-bottom: 30px;
+    margin-top: 30px;
   }
 
   .astronomy-container {
